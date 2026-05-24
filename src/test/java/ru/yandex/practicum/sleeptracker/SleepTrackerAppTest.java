@@ -58,7 +58,6 @@ public class SleepTrackerAppTest {
         assertEquals("480,0", new AvgDurationFunction().apply(sessions).getValue());
     }
 
-    
     @Test
     void testBadQualityCount() {
         var sessions = List.of(
