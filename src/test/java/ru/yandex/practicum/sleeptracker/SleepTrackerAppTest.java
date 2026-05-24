@@ -72,8 +72,6 @@ public class SleepTrackerAppTest {
     }
 
 
-
-
     @Test
     void testSleeplessNightsAllSlept() {
         var s = List.of(
@@ -97,7 +95,7 @@ public class SleepTrackerAppTest {
         );
         assertEquals("1", new SleeplessNightsFunction().apply(s).getValue());
     }
-    
+
     @Test
     void testSleeplessNightsFirstAfter12() {
         var s = List.of(
@@ -119,8 +117,6 @@ public class SleepTrackerAppTest {
         );
         assertEquals("1", new SleeplessNightsFunction().apply(s).getValue());
     }
-
-
 
 
     @Test
