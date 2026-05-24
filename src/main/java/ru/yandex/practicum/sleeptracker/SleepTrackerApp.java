@@ -25,7 +25,7 @@ public class SleepTrackerApp {
 
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 
-                List<SleepingSession> sessions = reader.lines() 
+                List<SleepingSession> sessions = reader.lines()
                         .filter(line -> !line.isBlank())
                         .map(line -> {
                             String[] parts = line.split(";");
