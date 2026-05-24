@@ -55,7 +55,7 @@ public class SleepTrackerAppTest {
                 new SleepingSession(LocalDateTime.of(2025, 10, 2, 22, 0),
                         LocalDateTime.of(2025, 10, 3, 6, 0), SleepQuality.NORMAL)
         );
-        assertEquals("480,0", new AvgDurationFunction().apply(sessions).getValue());
+        assertEquals("480.0", new AvgDurationFunction().apply(sessions).getValue());
     }
 
     @Test
