@@ -9,6 +9,9 @@ import java.util.stream.Stream;
 
 public class SleeplessNightsFunction implements Function<List<SleepingSession>, SleepAnalysisResult> {
 
+    private static final int NOON_HOUR = 12;
+    private static final int NIGHT_END_HOUR = 6;
+
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sessions) {
         if (sessions.isEmpty()) {
@@ -25,7 +28,7 @@ public class SleeplessNightsFunction implements Function<List<SleepingSession>, 
                 .max(Comparator.naturalOrder())
                 .orElseThrow();
 
-        LocalDate firstNight = minStart.getHour() >= 12
+        LocalDate firstNight = minStart.getHour() >= NOON_HOUR
                 ? minStart.toLocalDate().plusDays(1)
                 : minStart.toLocalDate().minusDays(1);
         LocalDate lastNight = maxEnd.toLocalDate();
@@ -35,7 +38,7 @@ public class SleeplessNightsFunction implements Function<List<SleepingSession>, 
         long sleeplessCount = Stream.iterate(firstNight, date -> date.plusDays(1))
                 .limit(nightsCount)
                 .filter(date -> sessions.stream()
-                        .noneMatch(s -> s.getStart().isBefore(date.atTime(6, 0))
+                        .noneMatch(s -> s.getStart().isBefore(date.atTime(NIGHT_END_HOUR, 0))
                                 && s.getEnd().isAfter(date.atStartOfDay())))
                 .count();
 

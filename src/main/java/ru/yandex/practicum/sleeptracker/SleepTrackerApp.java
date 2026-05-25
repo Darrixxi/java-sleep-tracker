@@ -51,7 +51,7 @@ public class SleepTrackerApp {
 
             } catch (IOException e) {
                 System.err.println("Ошибка чтения файла: " + e.getMessage());
-            } catch (DateTimeParseException | IllegalArgumentException e) {
+            } catch (DateTimeParseException e) {
                 System.err.println("Ошибка формата данных в строке лога: " + e.getMessage());
             }
         }
